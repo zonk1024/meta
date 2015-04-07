@@ -12,17 +12,17 @@ class BlahMeta(type):
         print('BlahMeta:', self)
 
 class BlahBase1(object):
-    _BlahBase1__classes = []
+    _BlahBase1__instances = []
 
     def __init__(self):
-        self._BlahBase1__classes.append(self)
+        self._BlahBase1__instances.append(self)
         print('BlahBase1:', self)
 
 class BlahBase2(object):
-    _BlahBase2__classes = []
+    _BlahBase2__instances = []
 
     def __init__(self):
-        self._BlahBase2__classes.append(self)
+        self._BlahBase2__instances.append(self)
         print('BlahBase2:', self)
 
 class BlahActual(with_metaclass(BlahMeta, BlahBase1, BlahBase2)):
@@ -37,8 +37,8 @@ b = BlahActual()
 print('Created b:', b)
 print('type(b):', type(b))
 print('BlahMeta._BlahMeta__classes:', BlahMeta._BlahMeta__classes)
-print('BlahBase1._BlahBase1__classes:', BlahBase1._BlahBase1__classes)
-print('BlahBase2._BlahBase2__classes:', BlahBase2._BlahBase2__classes)
+print('BlahBase1._BlahBase1__instances:', BlahBase1._BlahBase1__instances)
+print('BlahBase2._BlahBase2__instances:', BlahBase2._BlahBase2__instances)
 print('BlahActual._BlahActual__instances:', BlahActual._BlahActual__instances)
 print('dir(b):', dir(b))
 print('b.__class__:', b.__class__)
@@ -55,10 +55,11 @@ print('getmro(BlahActual):', getmro(BlahActual))
 # Created b: <__main__.BlahActual object at 0x7f1ed42026d0>
 # type(b): <class '__main__.BlahActual'>
 # BlahMeta._BlahMeta__classes: [<class '__main__.BlahActual'>]
-# BlahBase1._BlahBase1__classes: [<__main__.BlahActual object at 0x7f1ed42026d0>]
-# BlahBase2._BlahBase2__classes: []
+# BlahBase1._BlahBase1__instances: [<__main__.BlahActual object at 0x7f1ed42026d0>]
+# BlahBase2._BlahBase2__instances: []
 # BlahActual._BlahActual__instances: [<__main__.BlahActual object at 0x7f1ed42026d0>]
-# dir(b): ['_BlahActual__instances', '_BlahBase1__classes', '_BlahBase2__classes', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+# dir(b): ['_BlahActual__instances', '_BlahBase1__instances',
+# '_BlahBase2__instances', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
 # b.__class__: <class '__main__.BlahActual'>
 # b.__class__.__class__: <class '__main__.BlahMeta'>
 # getmro(BlahActual): (<class '__main__.BlahActual'>, <class '__main__.BlahBase1'>, <class '__main__.BlahBase2'>, <type 'object'>)
@@ -74,10 +75,11 @@ print('getmro(BlahActual):', getmro(BlahActual))
 # Created b: <__main__.BlahActual object at 0x7f482a922c18>
 # type(b): <class '__main__.BlahActual'>
 # BlahMeta._BlahMeta__classes: [<class 'six.NewBase'>, <class '__main__.BlahActual'>]
-# BlahBase1._BlahBase1__classes: [<__main__.BlahActual object at 0x7f482a922c18>]
-# BlahBase2._BlahBase2__classes: []
+# BlahBase1._BlahBase1__instances: [<__main__.BlahActual object at 0x7f482a922c18>]
+# BlahBase2._BlahBase2__instances: []
 # BlahActual._BlahActual__instances: [<__main__.BlahActual object at 0x7f482a922c18>]
-# dir(b): ['_BlahActual__instances', '_BlahBase1__classes', '_BlahBase2__classes', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+# dir(b): ['_BlahActual__instances', '_BlahBase1__instances',
+# '_BlahBase2__instances', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
 # b.__class__: <class '__main__.BlahActual'>
 # b.__class__.__class__: <class '__main__.BlahMeta'>
 # getmro(BlahActual): (<class '__main__.BlahActual'>, <class 'six.NewBase'>, <class '__main__.BlahBase1'>, <class '__main__.BlahBase2'>, <class 'object'>)
