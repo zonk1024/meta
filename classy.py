@@ -54,8 +54,6 @@ print('getmro(Actual):', getmro(Actual))
 
 print('\n\n')
 
-####
-#### The following sections have to be commented
 if PY2:
     class Another(Foo, Bar):
         __metaclass__ = Meta
